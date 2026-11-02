@@ -1,0 +1,255 @@
+
+:root {
+    --bg: #141e30;
+    --surface: #1f2b44;
+    --text: #f5f5f7;
+    --accent: #4da3ff;
+    --warn: #ff5a5f;
+    --font-title: "Black Han Sans", sans-serif;
+    --font-body: "Noto Sans KR", sans-serif;
+    --gap: 20px;
+
+    --shadow: rgba(0, 0, 0, 0.36);
+    --overlay: rgba(0, 0, 0, 0.6);
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg), var(--surface));
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 16px;
+    color: var(--text);
+    font-family: var(--font-body);
+}
+
+h1,
+footer {
+    color: var(--text);
+}
+
+h1,
+h2 {
+    font-family: var(--font-title);
+    font-weight: normal;
+}
+
+.top,
+main,
+footer,
+.hero {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow);
+    background: var(--surface);
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: var(--text);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px var(--shadow);
+}
+
+.info {
+    padding: 12px 16px;
+}
+
+.info h3 {
+    font-size: 1.2rem;
+}
+
+.poster {
+    width: 100%;
+    display: block;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--warn);
+    color: var(--text);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: bold;
+}
+
+.rank {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--accent);
+    color: var(--text);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: bold;
+}
+
+.change {
+    font-weight: bold;
+}
+
+.change.up::before {
+    content: "▲";
+    color: var(--warn);
+}
+
+.change.down::before {
+    content: "▼";
+    color: var(--accent);
+}
+
+.change.new::before {
+    content: "NEW";
+    color: var(--warn);
+}
+
+.card.no-poster .poster-fallback {
+    aspect-ratio: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-family: var(--font-title);
+    background: linear-gradient(135deg, var(--accent), var(--surface));
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.board {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+}
+
+.hero {
+    background-image:
+        linear-gradient(var(--overlay), var(--overlay)),
+        url("https://image.tmdb.org/t/p/w1280//jK65srQczOKTpW62wPxwwKztGgE.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 40vh;
+    padding: 24px;
+    box-sizing: border-box;
+    color: var(--text);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero h2 {
+    font-size: 2rem;
+}
+
+.basis {
+    color: var(--text);
+}
+
+/* 상세 페이지 배경 */
+.detail-page {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url("https://image.tmdb.org/t/p/w1280/rVOll8XOde5BuIF4tGO1q0pfngQ.jpg");
+
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+}
+
+.detail img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.detail dl {
+    margin: 0;
+    background: var(--surface);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.detail dt {
+    font-weight: bold;
+    color: var(--accent);
+    margin-top: 16px;
+}
+
+.detail dd {
+    margin: 8px 0 16px;
+    line-height: 1.8;
+}
+
+main > p a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+main > p a:hover {
+    color: var(--accent);
+}
+
+@media (min-width: 600px) {
+    nav ul {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .board {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .hero {
+        min-height: 60vh;
+    }
+
+    .hero h2 {
+        font-size: 3rem;
+    }
+}
